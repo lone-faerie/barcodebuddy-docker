@@ -3,13 +3,14 @@
 
 # create symlinks
 i=/app/bbuddy/data
-[[ -e "$i" && ! -L "$i" && -e /config/"$(basename "$i")" ]] && \
+[[ -e "$i" && ! -L "$i" && -e /data ]] && \
         rm -Rf "$i" && \
-        ln -s /config/"$(basename "$i")" "$i"
+        ln -s /data "$i"
 [[ -e "$i" && ! -L "$i" ]] && \
-	mv "$i" /config/"$(basename "$i")" && \
-	ln -s /config/"$(basename "$i")" "$i"
+	mv "$i" /data && \
+	ln -s /data "$i"
 
 chown -R abc:abc \
     /app/bbuddy \
     /config
+    /data
